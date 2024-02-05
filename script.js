@@ -13,28 +13,32 @@ require([
    * url with esriConfig.portalUrl.
    ************************************************************/
   const symbol = {
-    type:"simple-marker",
-    color:"red",
+    type: "simple-marker",
+    color: "red",
     size: 4
   };
-  
+
   const renderer = {
     type: "simple",
-    symbol: symbol    
+    symbol: symbol
   };
-  
+
   const template = {
-    title:"What Happened?",
-    type:"fields",
-    fieldInfos:[{
-      fieldName: "CollisnTyp",
-      label: "Collision Type",
-      visible: true
-    }]
-  }
-  
+    content: "{CollisnTyp} collision",
+    title: "What Happened?",
+    // type:"fields",
+    fieldInfos: [
+      {
+        fieldName: "CollisnTyp",
+        label: "Collision Type",
+        visible: true
+      }
+    ]
+  };
+
   const fl = new FeatureLayer({
-    url: "https://services2.arcgis.com/zNjnZafDYCAJAbN0/arcgis/rest/services/Traffic_Collisions/FeatureServer",
+    url:
+      "https://services2.arcgis.com/zNjnZafDYCAJAbN0/arcgis/rest/services/Traffic_Collisions/FeatureServer/0",
     renderer: renderer,
     outFields: ["*"],
     popupTemplate: template
